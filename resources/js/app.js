@@ -4,9 +4,9 @@ import.meta.glob(["../img/**"]);
 import * as bootstrap from "bootstrap";
 import { createApp } from 'vue';
 
-import ExampleComponent from './components/ExampleComponent.vue';
+import IndexComponent from './components/IndexComponent.vue';
 
 const app = createApp({});
-app.component('example-component', ExampleComponent);
+app.component('index-component', IndexComponent);
 
 app.mount('#app');

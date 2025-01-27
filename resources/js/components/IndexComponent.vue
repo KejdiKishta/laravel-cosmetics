@@ -4,6 +4,7 @@
         <table>
             <thead>
                 <tr>
+                    <th>Foto</th>
                     <th>Nome</th>
                     <th>Marca</th>
                     <th>Prezzo</th>
@@ -12,6 +13,7 @@
             </thead>
             <tbody>
                 <tr v-for="perfume in perfumes" :key="perfume.id">
+                    <td><img :src="perfume.image" alt=""></td>
                     <td>{{ perfume.name }}</td>
                     <td>{{ perfume.brand }}</td>
                     <td>{{ perfume.price }} €</td>
@@ -32,8 +34,8 @@ export default {
         };
     },
     async mounted() {
-        const response = await axios.get('/api/perfumes'); // Chiamata API
-        this.perfumes = response.data; // Assegna i dati alla variabile
+        const response = await axios.get('/api/perfumes');
+        this.perfumes = response.data;
     },
 };
 </script>
