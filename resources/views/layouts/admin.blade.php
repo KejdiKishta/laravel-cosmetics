@@ -19,7 +19,7 @@
   <link rel="dns-prefetch" href="//fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
-  <!-- Usando Vite -->
+  <!-- Vite -->
   @vite(['resources/css/app.scss', 'resources/js/app.js'])
 </head>
 
@@ -58,11 +58,18 @@
           <div class="position-sticky pt-3">
             <ul class="nav flex-column">
               <li class="nav-item">
-                <a class="nav-link text-white {{ Route::currentRouteName() == 'dashboard' ? 'bg-secondary' : '' }}"
+                <a class="nav-link text-white"
                   href="{{ route('admin.dashboard') }}">
                   <i class="fa-solid fa-tachometer-alt fa-lg fa-fw"></i> Dashboard
                 </a>
               </li>
+              <li class="nav-item">
+                <a class="nav-link text-white"
+                  href="{{ route('admin.perfumes.index') }}">
+                  <i class="fa-solid fa-list fa-lg fa-fw"></i> Index
+                </a>
+              </li>
+
             </ul>
 
 

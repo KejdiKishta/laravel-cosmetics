@@ -19,5 +19,7 @@
                 </div>
             </div>
         </div>
+        {{-- <admin-index-component> </admin-index-component> --}}
     </div>
+
 @endsection
