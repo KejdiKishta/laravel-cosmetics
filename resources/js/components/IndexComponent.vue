@@ -22,7 +22,7 @@ export default {
                     <img :src="perfume.image" alt="Perfume image" class="card-img-top" />
                     <div class="card-body">
                         <h5 class="card-title">{{ perfume.name }}</h5>
-                        <p class="card-text">{{ perfume.brand }}</p>
+                        <p class="card-text">By {{ perfume.brand }}</p>
                         <p class="card-text fst-italic">{{ perfume.description }}</p>
                         <p class="card-text btn price_btn">{{ perfume.price }} €</p>
                     </div>
@@ -30,26 +30,34 @@ export default {
             </div>
         </div>
     </div>
+
+    <footer class="footer">
+        <div class="container text-center">
+            <p>&copy; 2025 Perfume Shop. All rights reserved.</p>
+            <p>Follow us on:
+                <a href="#" class="social-link">Facebook</a> |
+                <a href="#" class="social-link">Instagram</a> |
+                <a href="#" class="social-link">Twitter</a>
+            </p>
+        </div>
+    </footer>
 </template>
 
 <style scoped lang="scss">
-/* Nessun bisogno di altre modifiche per Flexbox, Bootstrap si occuperà della responsività */
 
 .bg_main {
     background: linear-gradient(to bottom, #f0e6f6, #d8a7d7);
-    color: #333; /* Colore del testo scuro per contrasto */
+    color: #333;
     font-family: 'Arial', sans-serif;
 }
 
 
 .price_btn {
     background: linear-gradient(to bottom, #f0e6f6, #d8a7d7);
-    color: #333; /* Colore del testo scuro per contrasto */
+    color: #333;
     font-family: 'Arial', sans-serif;
 }
 
-
-/* Puoi personalizzare ulteriormente i margini e i padding se desideri */
 .card {
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -66,5 +74,20 @@ export default {
     aspect-ratio: 1;
 }
 
-/* Puoi personalizzare ulteriormente il layout in base alla tua esigenza */
+.footer {
+    background: #333;
+    color: #fff;
+    padding: 50px 0;
+    text-align: center;
+}
+
+.footer .social-link {
+    color: #d8a7d7;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.footer .social-link:hover {
+    text-decoration: underline;
+}
 </style>
