@@ -5,12 +5,38 @@ export default {
     data() {
         return {
             perfumes: [],
+            currentPage: 1,
+            totalPages: 1,
         };
     },
     async mounted() {
-        const response = await axios.get('/api/perfumes');
-        this.perfumes = response.data;
+        await this.fetchPerfumes();
     },
+    methods: {
+        async fetchPerfumes(page = 1) {
+            try {
+                const response = await axios.get(`/api/perfumes?page=${page}`);
+                this.perfumes = response.data.data;
+                this.totalPages = response.data.last_page;
+                this.currentPage = response.data.current_page;
+            } catch (error) {
+                console.error("Errore nel caricamento dei profumi:", error);
+            }
+        },
+        goToPage(page) {
+            if (page !== this.currentPage) {
+                this.fetchPerfumes(page);
+            }
+        },
+        getImagePath(image) {
+            if (image.startsWith('http') || image.startsWith('//')) {
+                return image;
+            }
+
+            return '/storage/' + image;
+        }
+
+    }
 };
 </script>
 
@@ -19,7 +45,7 @@ export default {
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
             <div class="col" v-for="perfume in perfumes" :key="perfume.id">
                 <div class="card">
-                    <img :src="perfume.image" alt="Perfume image" class="card-img-top" />
+                    <img :src="getImagePath(perfume.image)" alt="Perfume image" class="card-img-top" />
                     <div class="card-body">
                         <h5 class="card-title">{{ perfume.name }}</h5>
                         <p class="card-text">By {{ perfume.brand }}</p>
@@ -28,6 +54,21 @@ export default {
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="pagination">
+            <button @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">« Prev</button>
+
+            <button
+                v-for="page in totalPages"
+                :key="page"
+                @click="goToPage(page)"
+                :class="{ active: currentPage === page }"
+            >
+                {{ page }}
+            </button>
+
+            <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">Next »</button>
         </div>
     </div>
 
@@ -89,5 +130,38 @@ export default {
 
 .footer .social-link:hover {
     text-decoration: underline;
+}
+
+.pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.pagination button {
+    background: #d8a7d7;
+    border: none;
+    color: #fff;
+    padding: 10px 15px;
+    margin: 5px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s, transform 0.2s;
+}
+
+.pagination button:hover {
+    background: #b86bbd;
+    transform: scale(1.05);
+}
+
+.pagination button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.pagination .active {
+    background: #7a3e75;
+    font-weight: bold;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
 </style>
