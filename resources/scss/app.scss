@@ -16,14 +16,20 @@ img {
 }
 
 .site-title {
-    font-family: 'Dancing Script', cursive; /* Font corsivo elegante */
-    font-size: 3rem; /* Grandezza del font moderata */
-    font-weight: normal; /* Imposta il peso del font a normale (non troppo pesante) */
-    color: #6c4f37; /* Colore caldo che richiama il tema dei profumi */
-    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2); /* Ombra leggera per profondità */
-    letter-spacing: 1px; /* Distanza tra le lettere */
-    margin: 20px 0; /* Spazio sopra e sotto */
-    text-align: center; /* Centra il titolo */
-    text-transform: capitalize; /* Inizia ogni parola con la lettera maiuscola */
-    transition: transform 0.3s ease, color 0.3s ease; /* Aggiunge una transizione per effetto hover */
+    font-family: 'Dancing Script', cursive; 
+    font-size: 3rem;
+    font-weight: normal;
+    color: #6c4f37;
+    text-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2); 
+    letter-spacing: 1px; 
+    margin: 20px 0; 
+    text-align: center; 
+    text-transform: capitalize;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+@media (max-width: 576px) {
+    .site-title {
+        font-size: 1.2rem;
+    }
 }

@@ -103,6 +103,9 @@ export default {
     border: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .card:hover {
@@ -111,8 +114,23 @@ export default {
 }
 
 .card-img-top {
-    height: 300px;
+    width: 100%;
     aspect-ratio: 1;
+}
+
+.card-body {
+    flex-grow: 1; /* Fa sì che la body occupi tutto lo spazio disponibile */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Distribuisce gli elementi in modo uniforme */
+}
+
+.card-title {
+    margin-bottom: 10px; /* Aggiunge un po' di spazio tra il titolo e il testo */
+}
+
+.card-text {
+    margin-bottom: 10px; /* Aggiunge un po' di spazio tra il testo e il prezzo */
 }
 
 .footer {
