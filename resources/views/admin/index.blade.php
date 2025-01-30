@@ -2,17 +2,20 @@
 
 @section('content')
     <div class="container">
-        <h1>Index of products</h1>
-
-        <div>
-            <a href="{{ route('admin.perfumes.create') }}" class="btn btn-info">
-                New product
-            </a>
+        <div class="d-flex justify-content-between py-3">
+            <h1>Index of products</h1>
+    
+            <div>
+                <a href="{{ route('admin.perfumes.create') }}" class="btn btn-outline-info">
+                    <i class="fa-icon fa-plus"></i> New product
+                </a>
+            </div>
         </div>
-        
+
         <table class="table table-bordered">
             <thead>
                 <tr>
+                    <th>Id</th>
                     <th>Image</th>
                     <th>Name</th>
                     <th>Brand</th>
@@ -24,6 +27,7 @@
             <tbody>
                 @foreach ($perfumes as $perfume)
                     <tr>
+                        <td>{{ $perfume->id }}</td>
                         <td>
                             @if (Str::startsWith($perfume->image, 'http'))
                                 {{-- for seeders img --}}
