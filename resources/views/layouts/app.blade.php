@@ -24,29 +24,41 @@
 
 
         <nav class="navbar navbar-expand-md navbar-light shadow-sm my_bg">
-            <div class="container justify-content-center">
+            <div class="container">
                 <a class="navbar-brand align-items-center" href="{{ url('/') }}">
                     <div class="site-title">
-                        <img src="{{ asset('img/logo.jpeg') }}" width="70" alt="Logo" class="logo"> 
-                        Future Lead Cosmetics 
                         <img src="{{ asset('img/logo.jpeg') }}" width="70" alt="Logo" class="logo"> 
                     </div>
                     {{-- config('app.name', 'Laravel') --}}
                 </a>
 
-                {{-- <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
-                </button> --}}
+                </button>
 
-                {{-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav me-auto">
+                    <ul class="navbar-nav ms-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="{{ url('/') }}">{{ __('Home') }}</a>
                         </li>
-                    </ul> --}}
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/') }}">{{ __('About') }}</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ url('/') }}">{{ __('Socials') }}</a>
+                        </li>
+                    </ul>
+
+
 
                     <!-- Right Side Of Navbar -->
                     {{-- <ul class="navbar-nav ml-auto">
@@ -82,7 +94,7 @@
                             </li>
                         @endguest
                     </ul> --}}
-                {{-- </div> --}}
+                </div>
             </div>
         </nav>
 

@@ -24,6 +24,11 @@ export default {
             }
         },
         goToPage(page) {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
             if (page !== this.currentPage) {
                 this.fetchPerfumes(page);
             }
@@ -32,10 +37,8 @@ export default {
             if (image.startsWith('http') || image.startsWith('//')) {
                 return image;
             }
-
             return '/storage/' + image;
-        }
-
+        },
     }
 };
 </script>
@@ -50,12 +53,19 @@ export default {
                         <h5 class="card-title">{{ perfume.name }}</h5>
                         <p class="card-text">By {{ perfume.brand }}</p>
                         <p class="card-text fst-italic">{{ perfume.description }}</p>
-                        <p class="card-text btn price_btn">{{ perfume.price }} €</p>
+                        <p class="card-text price">{{ perfume.price }} €</p>
+                        
+                        <div class="d-flex justify-content-between mt-3">
+                            <button class="btn btn-success w-100">Acquista ora</button>
+                            <div class="ps-2">
+                                <button class="btn btn-outline-secondary"><i class="fa-solid fa-cart-arrow-down"></i></button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
+        
         <div class="pagination">
             <button @click="goToPage(currentPage - 1)" :disabled="currentPage === 1">« Prev</button>
 
@@ -70,8 +80,9 @@ export default {
 
             <button @click="goToPage(currentPage + 1)" :disabled="currentPage === totalPages">Next »</button>
         </div>
-    </div>
 
+    </div>
+    
     <footer class="footer">
         <div class="container text-center">
             <p>&copy; 2025 Perfume Shop. All rights reserved.</p>
@@ -82,18 +93,11 @@ export default {
             </p>
         </div>
     </footer>
+
 </template>
 
 <style scoped lang="scss">
-
 .bg_main {
-    background: linear-gradient(to bottom, #f0e6f6, #d8a7d7);
-    color: #333;
-    font-family: 'Arial', sans-serif;
-}
-
-
-.price_btn {
     background: linear-gradient(to bottom, #f0e6f6, #d8a7d7);
     color: #333;
     font-family: 'Arial', sans-serif;
@@ -116,21 +120,32 @@ export default {
 .card-img-top {
     width: 100%;
     aspect-ratio: 1;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
 }
 
 .card-body {
-    flex-grow: 1; /* Fa sì che la body occupi tutto lo spazio disponibile */
+    flex-grow: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Distribuisce gli elementi in modo uniforme */
+    justify-content: space-between;
+    text-align: center;
 }
 
-.card-title {
-    margin-bottom: 10px; /* Aggiunge un po' di spazio tra il titolo e il testo */
+.price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #7a3e75;
 }
 
-.card-text {
-    margin-bottom: 10px; /* Aggiunge un po' di spazio tra il testo e il prezzo */
+.btn {
+    transition: transform 0.2s ease, background 0.3s;
+    font-weight: bold;
+}
+
+.btn:hover {
+    transform: scale(1.05);
 }
 
 .footer {
