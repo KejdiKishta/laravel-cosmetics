@@ -12,12 +12,21 @@ class PerfumeController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $perfumes = Perfume::all();
+        $query = Perfume::query();
+    
+        if ($request->has('search')) {
+            $search = $request->input('search');
+            $query  ->where('name', 'LIKE', "%$search%")
+                    ->orWhere('brand', 'LIKE', "%$search%");
+        }
+    
+        $perfumes = $query->get();
+    
         return view('admin.index', compact('perfumes'));
     }
-
+    
     /**
      * Show the form for creating a new resource.
      */

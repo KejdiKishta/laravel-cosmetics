@@ -12,6 +12,16 @@
             </div>
         </div>
 
+        {{-- Search bar --}}
+        <form method="GET" action="{{ route('admin.perfumes.index') }}" class="mb-4">
+            <div class="input-group">
+                <input type="text" name="search" class="form-control" placeholder="Search for a product..." value="{{ request('search') }}">
+                <button type="submit" class="btn btn-outline-primary">
+                    <i class="fa-solid fa-search"></i> Search
+                </button>
+            </div>
+        </form>
+
         <table class="table table-bordered">
             <thead>
                 <tr>
